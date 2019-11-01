@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/onboarding_nav_graph"
+    app:startDestination="@id/OBNumberVerificationFragment">
+
+<!--    <fragment-->
+<!--        android:id="@+id/emailLoginFragment"-->
+<!--        android:name="com.et.vtracking.fragments.EmailLoginFragment"-->
+<!--        android:label="fragment_email_login"-->
+<!--        tools:layout="@layout/fragment_email_login" >-->
+<!--        <action-->
+<!--            android:id="@+id/action_emailLoginFragment_to_emailSignUpFragment"-->
+<!--            app:destination="@id/emailSignUpFragment" />-->
+<!--    </fragment>-->
+<!--    <fragment-->
+<!--        android:id="@+id/emailSignUpFragment"-->
+<!--        android:name="com.et.vtracking.fragments.EmailSignUpFragment"-->
+<!--        android:label="fragment_email_sign_up"-->
+<!--        tools:layout="@layout/fragment_email_sign_up" >-->
+<!--        <action-->
+<!--            android:id="@+id/action_emailSignUpFragment_to_emailLoginFragment"-->
+<!--            app:destination="@id/emailLoginFragment" />-->
+<!--    </fragment>-->
+    <fragment
+        android:id="@+id/OBNumberVerificationFragment"
+        android:name="com.et.vtracking.fragments.OBNumberVerificationFragment"
+        android:label="fragment_obnumber_varification"
+        tools:layout="@layout/fragment_obnumber_varification" >
+        <action
+            android:id="@+id/action_OBNumberVerificationFragment_to_OBPinCodeFragment"
+            app:destination="@id/OBPinCodeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/OBPinCodeFragment"
+        android:name="com.et.vtracking.fragments.OBPinCodeFragment"
+        android:label="fragment_obpin_code"
+        tools:layout="@layout/fragment_obpin_code" >
+        <action
+            android:id="@+id/action_OBPinCodeFragment_to_onboardingFragment"
+            app:destination="@id/onboardingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.et.vtracking.fragments.OnboardingFragment"
+        android:label="OnboardingFragment" />
+</navigation>

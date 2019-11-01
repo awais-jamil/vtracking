@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "260626340842",
+    "firebase_url": "https://vtrackingdemo.firebaseio.com",
+    "project_id": "vtrackingdemo",
+    "storage_bucket": "vtrackingdemo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:260626340842:android:ed73c2e12f5b1a5ac8b093",
+        "android_client_info": {
+          "package_name": "com.et.vtracking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "260626340842-emebihtmm0gt4k5isod2hk5hoj5i6pbs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.et.vtracking",
+            "certificate_hash": "1f06870f0a4a4cc120cd2c0c2007c318e2619dbe"
+          }
+        },
+        {
+          "client_id": "260626340842-jve4chkqr2ilbcl1r6lj5v2qi39fs4ba.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAW54jU3d9f7JdjGABWpeOSZetzHW09DpU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "260626340842-jve4chkqr2ilbcl1r6lj5v2qi39fs4ba.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "260626340842-5tsddm6v8la3rrvtjbbu8u0eppdnnvp1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.et.VTracker"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

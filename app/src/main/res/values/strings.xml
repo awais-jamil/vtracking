@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">vTracking</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="user_type">
+        <item>""</item>
+        <item>Tracker</item>
+        <item>Driver</item>
+    </string-array>
+</resources>
