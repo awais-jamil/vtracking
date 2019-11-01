@@ -16,14 +16,13 @@ import com.engintech.vtracking.models.CurrentUser
 import com.engintech.vtracking.viewmodels.DashboardViewModel
 
 import com.et.vtracking.R
-import com.et.vtracking.activities.MainActivity
 import com.et.vtracking.baseControls.BaseFragment
-import com.et.vtracking.networkLayer.AuthenticationService
 import kotlinx.android.synthetic.main.fragment_dash_board.view.*
 import android.widget.EditText
 import android.view.LayoutInflater
 import android.widget.Button
 import androidx.core.content.ContextCompat
+import com.engintech.vtracking.activities.DashBoardActivity
 
 
 /**
@@ -32,7 +31,6 @@ import androidx.core.content.ContextCompat
 class DashBoardFragment : BaseFragment() {
 
     val dashboardViewModel by activityViewModels<DashboardViewModel>()
-
 
     lateinit var trackView: LinearLayout
     lateinit var shareView: LinearLayout
@@ -43,36 +41,19 @@ class DashBoardFragment : BaseFragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_dash_board, container, false)
-        setHasOptionsMenu(true)
+//        setHasOptionsMenu(true)
 
         trackView = view.findViewById(R.id.track_view)
         shareView = view.findViewById(R.id.share_view)
-        shareView.visibility = View.GONE
-        trackView.visibility = View.GONE
-
-        dashboardViewModel.userDataLoaded.observe(
-            viewLifecycleOwner,
-            Observer { loaded ->
-
-                if(loaded){
-                    view.uid_text.setText(CurrentUser.user.trackingID)
-
-                    if(CurrentUser.user.userType.equals("Tracker")){
-                        trackView.visibility = View.VISIBLE
-                        shareView.visibility = View.GONE
-                    } else {
-                        shareView.visibility = View.VISIBLE
-                        trackView.visibility = View.GONE
-                    }
-                }
-            })
+//        shareView.visibility = View.GONE
+        trackView.visibility = View.INVISIBLE
 
         view.share_id.setOnClickListener {
             try {
                 val shareIntent = Intent(Intent.ACTION_SEND)
                 shareIntent.type = "text/plain"
                 shareIntent.putExtra(Intent.EXTRA_SUBJECT, "My application name")
-                var shareMessage =  CurrentUser.user.trackingID
+                var shareMessage ="TrackingId: " + CurrentUser.user.trackingID + "\n Download VTracking app from PlayStore and start Tracking this user."
 
                 shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
                 startActivity(Intent.createChooser(shareIntent, "choose one"))
@@ -116,6 +97,20 @@ class DashBoardFragment : BaseFragment() {
             }
         }
 
+        view.menu_butn.setOnClickListener {
+            (activity as DashBoardActivity).openDrawer()
+        }
+
+        dashboardViewModel.userDataLoaded.observe(
+            viewLifecycleOwner,
+            Observer { loaded ->
+
+                if(loaded){
+                    hideLoadingIndicator()
+                    loadUI()
+                }
+            })
+
         return view
     }
 
@@ -123,6 +118,23 @@ class DashBoardFragment : BaseFragment() {
         super.onStart()
 
         setActionBarTitle("")
+
+        if(CurrentUser.user.fullName.equals("")){
+            displayLoadingIndicator("Fetching Data...")
+        }
+    }
+
+    fun loadUI(){
+
+        if(dashboardViewModel.currentUser.userType.equals("Tracker")){
+            trackView.visibility = View.VISIBLE
+            shareView.visibility = View.INVISIBLE
+        } else {
+            shareView.visibility = View.VISIBLE
+            trackView.visibility = View.INVISIBLE
+
+            view!!.uid_text.setText(dashboardViewModel.currentUser.trackingID)
+        }
     }
 
     fun showShareDialog(){
@@ -151,58 +163,10 @@ class DashBoardFragment : BaseFragment() {
             if(editText.text.isNotEmpty()){
                 displayLoadingIndicator("loading...")
 
-//                dashboardViewModel.shareLocationWith(editText.text.toString(), callback = { error ->
-//                    if (error == null) {
-//                        hideLoadingIndicator()
-//                        alertDialog.dismiss()
-//                        showPrompt(context!!, "Success", "Now you can start sharing Location")
-//                    }
-//                })
             }
 
         }
 
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
-        menuInflater.inflate(R.menu.logout_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
-
-        R.id.action_logout -> {
-
-            AuthenticationService.logoutUser()
-
-            val intent = Intent(context, MainActivity::class.java)
-
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-
-            startActivity(intent)
-
-            true
-        }
-        else -> super.onOptionsItemSelected(item)
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int,
-                                            permissions: Array<String>, grantResults: IntArray) {
-        when (requestCode) {
-            1 -> {
-                // If request is cancelled, the result arrays are empty.
-                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    findNavController().navigate(R.id.action_dashBoardFragment_to_locationFragment)
-                } else {
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                }
-                return
-            }
-            else -> {
-                // Ignore all other requests.
-            }
-        }
     }
 
 }

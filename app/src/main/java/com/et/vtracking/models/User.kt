@@ -11,7 +11,8 @@ data class User(
     var userType: String = "",
     var trackingID:  String = "",
     var latitude: Double = 0.0,
-    var longitude: Double = 0.0
+    var longitude: Double = 0.0,
+    var lastSeen: String = ""
 ):Serializable {
 
     fun User.isCurrent(): Boolean {

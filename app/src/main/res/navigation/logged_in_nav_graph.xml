@@ -18,5 +18,9 @@
         android:id="@+id/locationFragment"
         android:name="com.et.vtracking.fragments.LocationFragment"
         android:label="fragment_location"
-        tools:layout="@layout/fragment_location" />
+        tools:layout="@layout/fragment_location" >
+        <action
+            android:id="@+id/action_locationFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
+    </fragment>
 </navigation>

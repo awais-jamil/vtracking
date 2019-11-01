@@ -7,15 +7,23 @@
     android:background="@color/backgroundColor"
     android:scrollbarAlwaysDrawVerticalTrack="true">
 
+    <Button
+        android:id="@+id/menu_butn"
+        android:layout_width="32dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/menu_icon"/>
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="100dp"
-        android:alpha="0.30"
-        android:background="@drawable/background"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background"
+        app:layout_constraintBottom_toTopOf="@+id/share_view"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
@@ -24,28 +32,28 @@
         android:layout_height="wrap_content"
         android:background="#ffff"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/road"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="My Unique ID"
+            android:text="To Share your Location, share this pin with your friends."
             android:textStyle="bold"
+            android:textAllCaps="true"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="35dp"
             android:layout_marginStart="35dp"
-            android:textColor="@android:color/black"
             android:textSize="18sp"/>
 
         <LinearLayout
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="20dp"
             android:layout_height="match_parent">
+
             <TextView
                 android:id="@+id/uid_text"
                 android:layout_width="wrap_content"
@@ -53,7 +61,6 @@
                 android:text="Vehicle Number"
                 android:textStyle="bold"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:textColor="@android:color/black"
                 android:textSize="28sp"/>
 
             <Button
@@ -61,22 +68,21 @@
                 android:layout_width="60dp"
                 android:layout_marginStart="8dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/yellow_btn"
+                android:background="@null"
                 android:text="Share"
-                android:textColor="@android:color/black"
-                android:textSize="12sp" />
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp" />
 
         </LinearLayout>
-
 
         <Button
             android:id="@+id/start_button"
             android:layout_width="fill_parent"
-            android:layout_height="52dp"
+            android:layout_height="62dp"
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
             android:layout_marginBottom="22dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="32dp"
             android:background="@drawable/yellow_btn"
             android:text="start sharing location"
             android:textColor="@android:color/black"
@@ -91,33 +97,32 @@
         android:background="#ffff"
         android:orientation="vertical"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/road"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Unique Id"
+            android:text="Please enter the tracking id shared with you"
             android:textStyle="bold"
-            android:layout_marginTop="22dp"
+            android:textAllCaps="true"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="35dp"
             android:layout_marginStart="35dp"
-            android:textColor="@android:color/black"
             android:textSize="18sp"/>
 
         <EditText
             android:id="@+id/uid_number"
             android:layout_width="fill_parent"
-            android:layout_height="42dp"
-            android:hint="Vehicle Number"
+            android:layout_height="62dp"
+            android:hint="Tracking Id"
             android:lines="1"
             android:paddingEnd="8dp"
             android:paddingLeft="8dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="35dp"
             android:layout_marginStart="35dp"
-            android:layout_marginBottom="8dp"
             android:background="@drawable/edittext_drawable"
             android:inputType="text"
             android:singleLine="true" />
@@ -125,9 +130,9 @@
         <Button
             android:id="@+id/track_button"
             android:layout_width="fill_parent"
-            android:layout_height="52dp"
+            android:layout_height="62dp"
             android:layout_marginLeft="35dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="32dp"
             android:layout_marginRight="35dp"
             android:layout_marginBottom="22dp"
             android:background="@drawable/yellow_btn"
@@ -136,5 +141,12 @@
             android:textSize="18sp" />
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/road"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@drawable/checkerd_floor"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

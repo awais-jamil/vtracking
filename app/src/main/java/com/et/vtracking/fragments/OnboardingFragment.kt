@@ -12,6 +12,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.engintech.vtracking.activities.DashBoardActivity
 import com.engintech.vtracking.models.CurrentUser
+import com.engintech.vtracking.viewmodels.DashboardViewModel
 
 import com.et.vtracking.R
 import com.et.vtracking.baseControls.BaseFragment
@@ -22,6 +23,8 @@ import kotlinx.android.synthetic.main.fragment_onboarding.view.*
  * A simple [Fragment] subclass.
  */
 class OnboardingFragment : BaseFragment() {
+
+    val dashboardViewModel by activityViewModels<DashboardViewModel>()
 
     val onBoardingViewModel by activityViewModels<OnBoardingViewModel>()
 
@@ -60,7 +63,6 @@ class OnboardingFragment : BaseFragment() {
                 if(state == OnBoardingViewModel.OnBoardingState.ONBOARDING_DONE) {
 
                     hideLoadingIndicator()
-                    CurrentUser.reloadUser()
                     goToNextScreen()
                 }
 
@@ -77,6 +79,7 @@ class OnboardingFragment : BaseFragment() {
                     }
                 }
             })
+
 
         return  view
     }

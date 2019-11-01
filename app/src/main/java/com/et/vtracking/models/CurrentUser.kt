@@ -5,6 +5,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.et.vtracking.models.User
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 object CurrentUser {
@@ -24,6 +27,7 @@ object CurrentUser {
 
         user = User()
         reloadUser()
+
     }
 
     fun reloadUser() {
@@ -34,7 +38,7 @@ object CurrentUser {
     }
 
     fun fetchUserData(callback: (error: Exception?, user:User? ) -> Unit){
-
+        reloadUser()
         val firestore = FirebaseFirestore.getInstance()
         firestore.collection("user").document(firebaseUser!!.uid).get()
             .addOnSuccessListener {
@@ -55,10 +59,13 @@ object CurrentUser {
 
     fun updateLocation(lat: Double, long: Double, callback: (error: Exception?) -> Unit){
 
+        val currentTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.getDefault()).format(Date())
+
         var data = hashMapOf<String, Any>(
 
             "latitude" to lat.toDouble(),
-            "longitude" to long.toDouble()
+            "longitude" to long.toDouble(),
+            "lastSeen" to currentTime.toString()
         )
         val firestore = FirebaseFirestore.getInstance()
         firestore.collection("user").document(firebaseUser.uid).update(data)

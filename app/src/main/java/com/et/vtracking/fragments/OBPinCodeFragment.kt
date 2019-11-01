@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.engintech.vtracking.activities.DashBoardActivity
+import com.engintech.vtracking.viewmodels.DashboardViewModel
 import com.et.vtracking.baseControls.BaseFragment
 import com.et.vtracking.R
 import com.et.vtracking.viewmodels.OnBoardingViewModel
@@ -21,6 +22,7 @@ import kotlinx.android.synthetic.main.fragment_obpin_code.view.*
 class OBPinCodeFragment : BaseFragment() {
 
     val onBoardingViewModel by activityViewModels<OnBoardingViewModel>()
+    val dashboardViewModel by activityViewModels<DashboardViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +32,7 @@ class OBPinCodeFragment : BaseFragment() {
 
         val view = inflater.inflate(R.layout.fragment_obpin_code, container, false)
 
-        setHasOptionsMenu(true)
+//        setHasOptionsMenu(true)
 
         view.phone_number_text_view.text = onBoardingViewModel.verifiedPhoneNumber
 
@@ -69,9 +71,9 @@ class OBPinCodeFragment : BaseFragment() {
                 else if(state == OnBoardingViewModel.OnBoardingState.ONBOARDING_DONE) {
 
                     hideLoadingIndicator()
-
-                    //this is a returning user lets take him to logged in flow
                     goToLoggedInScreen()
+                    //this is a returning user lets take him to logged in flow
+
                 }
 
                 else if(
@@ -118,20 +120,20 @@ class OBPinCodeFragment : BaseFragment() {
         setActionBarTitle("")
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
-        menuInflater.inflate(R.menu.pin_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
-
-        R.id.action_resend -> {
-
-            displayLoadingIndicator("Sending Request")
-
-            onBoardingViewModel.resendPinCode()
-
-            true
-        }
-        else -> super.onOptionsItemSelected(item)
-    }
+//    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
+//        menuInflater.inflate(R.menu.pin_menu, menu)
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
+//
+//        R.id.action_resend -> {
+//
+//            displayLoadingIndicator("Sending Request")
+//
+//            onBoardingViewModel.resendPinCode()
+//
+//            true
+//        }
+//        else -> super.onOptionsItemSelected(item)
+//    }
 }

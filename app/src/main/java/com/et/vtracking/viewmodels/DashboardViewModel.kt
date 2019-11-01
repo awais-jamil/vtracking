@@ -14,7 +14,7 @@ import com.google.firebase.firestore.ListenerRegistration
 
 class DashboardViewModel: ViewModel() {
 
-    var currentUser: FirebaseUser? = null
+    var firebaseUser: FirebaseUser? = null
         get() = FirebaseAuth.getInstance().currentUser
         private set
 
@@ -25,6 +25,7 @@ class DashboardViewModel: ViewModel() {
     val latitude = MutableLiveData<Double> ()
     val longitude = MutableLiveData<Double> ()
 
+    lateinit var currentUser: User
     lateinit var trackingUser: User
 
     var trackingID: String? = ""
@@ -32,10 +33,16 @@ class DashboardViewModel: ViewModel() {
     private var listener: ListenerRegistration? = null
 
     init {
+        currentUser = User()
+        fetchCurrentUserData()
+    }
+
+    fun fetchCurrentUserData() {
 
         CurrentUser.fetchUserData(callback = { error, response ->
 
             if(error==null){
+                currentUser = response!!
                 userDataLoaded.value = true
             } else {
                 userDataLoaded.value = false

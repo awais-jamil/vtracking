@@ -13,8 +13,8 @@ class OnBoardingActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_on_boarding)
 
-        setSupportActionBar(findViewById(R.id.toolbar))
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        setSupportActionBar(findViewById(R.id.toolbar))
+//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 //        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         val navController = findNavController(R.id.nav_host_fragment)
@@ -25,6 +25,6 @@ class OnBoardingActivity : BaseActivity() {
 
         val appBarConfiguration = AppBarConfiguration.Builder(topLevelScreens).build()
 
-        setupActionBarWithNavController(navController, appBarConfiguration)
+//        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 }

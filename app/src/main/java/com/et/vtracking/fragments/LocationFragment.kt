@@ -32,6 +32,7 @@ import com.google.android.gms.tasks.OnFailureListener
 import android.os.Looper
 import com.google.android.gms.location.LocationSettingsResponse
 import androidx.fragment.app.activityViewModels
+import com.engintech.vtracking.activities.DashBoardActivity
 import com.engintech.vtracking.viewmodels.DashboardViewModel
 import com.google.android.gms.tasks.OnSuccessListener
 
@@ -78,20 +79,14 @@ class LocationFragment : BaseFragment(), OnMapReadyCallback{
         map = childFragmentManager.findFragmentById(R.id.frg) as SupportMapFragment
         map.getMapAsync(this)//remember getMap() is deprecated!
 
-        if(CurrentUser.user.userType.equals("Driver")) {
-
-            view.username.text = CurrentUser.user.fullName
-            view.vehicle_number.text = CurrentUser.user.trackingID
-        } else {
-            view.username.text = dashboardViewModel.trackingUser.fullName
-            view.vehicle_number.text = dashboardViewModel.trackingUser.trackingID
-        }
-
         dashboardViewModel.userLocationUpdated.observe(
             viewLifecycleOwner,
             androidx.lifecycle.Observer {
                 if(it){
                     Handler().postDelayed({
+
+                        view!!.last_seen_number.text = "LAST SEEN: "+dashboardViewModel.trackingUser.lastSeen.toUpperCase()
+
                         googleMap.clear()
                         googleMap!!.moveCamera(
                             CameraUpdateFactory.newLatLngZoom(
@@ -109,6 +104,10 @@ class LocationFragment : BaseFragment(), OnMapReadyCallback{
             }
         )
 
+        view.menu_butn.setOnClickListener {
+            (activity as DashBoardActivity).openDrawer()
+        }
+
         return view
     }
 
@@ -116,10 +115,31 @@ class LocationFragment : BaseFragment(), OnMapReadyCallback{
         super.onStart()
         setActionBarTitle("")
 
+        initLogic()
+        loadUserData()
+    }
+
+    fun initLogic(){
+
         if(CurrentUser.user.userType.equals("Driver")) {
-            init()
+            initLocation()
         } else {
             startListeningToLocation()
+        }
+    }
+
+    fun loadUserData(){
+
+        if(CurrentUser.user.userType.equals("Driver")) {
+
+            view!!.username.text = CurrentUser.user.fullName.toUpperCase()
+            view!!.vehicle_number.text = "CAR NUMBER: "+CurrentUser.user.trackingID.toUpperCase()
+            view!!.last_seen_number.text = "LAST SEEN: "+CurrentUser.user.lastSeen.toUpperCase()
+        } else {
+            view!!.username.text = dashboardViewModel.trackingUser.fullName.toUpperCase()
+            view!!.vehicle_number.text = "CAR NUMBER: "+dashboardViewModel.trackingUser.trackingID.toUpperCase()
+            view!!.last_seen_number.text = "LAST SEEN: "+CurrentUser.user.lastSeen.toUpperCase()
+
         }
     }
 
@@ -146,7 +166,7 @@ class LocationFragment : BaseFragment(), OnMapReadyCallback{
     }
 
 
-    fun init() {
+    fun initLocation() {
        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(context!!)
         mSettingsClient = LocationServices.getSettingsClient(context!!)
 

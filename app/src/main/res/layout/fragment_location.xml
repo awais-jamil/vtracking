@@ -7,10 +7,18 @@
     android:background="@android:color/white"
     tools:context=".fragments.LocationFragment">
 
+    <Button
+        android:id="@+id/menu_butn"
+        android:layout_width="32dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="15dp"
+        android:background="@drawable/menu_icon"/>
+
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="60dp"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="-20dp"
         android:padding="5dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/rounded_image"
@@ -21,27 +29,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:textSize="18sp"
+        android:textSize="28sp"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
         android:textColor="@android:color/black"
-        android:text="sdsd"/>
+        android:text="UserName"/>
 
     <TextView
         android:id="@+id/vehicle_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:layout_marginTop="8dp"
         android:layout_gravity="center_horizontal"
-        android:textColor="@android:color/black"
-        android:text=""/>
+        android:text="Vehicle Number"/>
 
-<!--    <com.google.android.gms.maps.MapView-->
-<!--        android:id="@+id/mapView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" />-->
+    <TextView
+        android:id="@+id/last_seen_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Last Seen"/>
 
     <fragment
         android:id="@+id/frg"

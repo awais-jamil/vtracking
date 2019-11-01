@@ -19,22 +19,4 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/onboarding_nav_graph"/>
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:elevation="0dp"
-        android:background="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:elevation="0dp" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
