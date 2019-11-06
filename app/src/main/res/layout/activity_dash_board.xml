@@ -29,6 +29,6 @@
             app:layout_constraintStart_toStartOf="parent"
             android:background="@color/backgroundColor"
             android:fitsSystemWindows="true"
-            app:menu="@menu/logout_menu"/>
+            app:menu="@menu/nav_menu"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

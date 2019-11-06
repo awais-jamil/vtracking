@@ -10,54 +10,87 @@
     <Button
         android:id="@+id/menu_butn"
         android:layout_width="32dp"
-        android:layout_height="22dp"
+        android:layout_height="26dp"
         android:layout_marginTop="25dp"
-        android:layout_marginStart="15dp"
-        android:background="@drawable/menu_icon"/>
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/menu"/>
 
-    <ImageView
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+    <Button
+        android:id="@+id/share_id"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/share"
+        android:layout_marginTop="-30dp"
+        android:layout_gravity="right"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:id="@+id/user_info_view"
+        android:orientation="vertical"
         android:layout_marginTop="-20dp"
-        android:padding="5dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/rounded_image"
-        android:src="@drawable/user"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="28sp"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"
-        android:textColor="@android:color/black"
-        android:text="UserName"/>
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:padding="5dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/rounded_image"
+            android:src="@drawable/user"/>
 
-    <TextView
-        android:id="@+id/vehicle_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="center_horizontal"
-        android:text="Vehicle Number"/>
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="28sp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/black"
+            android:text="UserName"/>
 
-    <TextView
-        android:id="@+id/last_seen_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="center_horizontal"
-        android:text="Last Seen"/>
+        <TextView
+            android:id="@+id/vehicle_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Vehicle Number"/>
+
+        <TextView
+            android:id="@+id/last_seen_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Last Seen"/>
+
+    </LinearLayout>
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/gif_view"
+        android:layout_marginTop="-50dp"
+        android:src="@drawable/gif_for_location_sharer" />
 
     <fragment
         android:id="@+id/frg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="15dp"
+        android:layout_marginBottom="18dp"
         class="com.google.android.gms.maps.SupportMapFragment"/>
 
+    <ImageView
+        android:id="@+id/road"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="-18dp"
+        android:background="@drawable/checkerd_floor" />
 </LinearLayout>

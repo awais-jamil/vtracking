@@ -17,15 +17,12 @@ import com.et.vtracking.support.Application
 
 class DashBoardActivity : AppCompatActivity() {
 
-    public var mDrawerLayout: DrawerLayout? = null
-    public var nv: NavigationView? = null
+    var mDrawerLayout: DrawerLayout? = null
+    var nv: NavigationView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dash_board)
-
-
-//        val appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
         val navController = findNavController(R.id.nav_host_fragment)
         findViewById<NavigationView>(R.id.nav_view)
             .setupWithNavController(navController)
@@ -50,14 +47,14 @@ class DashBoardActivity : AppCompatActivity() {
             mDrawerLayout!!.closeDrawer(nv!!)
 
            when(item.itemId) {
-               R.id.action_home -> {
+               R.id.home -> {
 
                    findNavController(R.id.nav_host_fragment).navigate(R.id.action_locationFragment_to_dashBoardFragment)
 
                    true
                }
 
-               R.id.action_logout -> {
+               R.id.logout -> {
 
                     AuthenticationService.logoutUser()
 

@@ -1,5 +1,6 @@
 package com.et.vtracking.fragments
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.location.Location
 import android.os.Bundle
@@ -30,6 +31,9 @@ import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.OnFailureListener
 import android.os.Looper
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import com.google.android.gms.location.LocationSettingsResponse
 import androidx.fragment.app.activityViewModels
 import com.engintech.vtracking.activities.DashBoardActivity
@@ -108,6 +112,10 @@ class LocationFragment : BaseFragment(), OnMapReadyCallback{
             (activity as DashBoardActivity).openDrawer()
         }
 
+        view.share_id.setOnClickListener {
+            showShareDialog()
+        }
+
         return view
     }
 
@@ -123,23 +131,59 @@ class LocationFragment : BaseFragment(), OnMapReadyCallback{
 
         if(CurrentUser.user.userType.equals("Driver")) {
             initLocation()
+            view!!.share_id.visibility = View.VISIBLE
         } else {
             startListeningToLocation()
+            view!!.share_id.visibility = View.GONE
         }
     }
 
     fun loadUserData(){
 
         if(CurrentUser.user.userType.equals("Driver")) {
-
-            view!!.username.text = CurrentUser.user.fullName.toUpperCase()
-            view!!.vehicle_number.text = "CAR NUMBER: "+CurrentUser.user.trackingID.toUpperCase()
-            view!!.last_seen_number.text = "LAST SEEN: "+CurrentUser.user.lastSeen.toUpperCase()
+            view!!.user_info_view.visibility = View.GONE
+            view!!.gif_view.visibility = View.VISIBLE
         } else {
+            view!!.user_info_view.visibility = View.VISIBLE
+            view!!.gif_view.visibility = View.GONE
             view!!.username.text = dashboardViewModel.trackingUser.fullName.toUpperCase()
             view!!.vehicle_number.text = "CAR NUMBER: "+dashboardViewModel.trackingUser.trackingID.toUpperCase()
             view!!.last_seen_number.text = "LAST SEEN: "+CurrentUser.user.lastSeen.toUpperCase()
+        }
+    }
 
+    fun showShareDialog(){
+
+        val dialogBuilder = AlertDialog.Builder(context)
+
+        val inflater = this.layoutInflater
+        val dialogView = inflater.inflate(R.layout.share_dialog, null)
+        dialogBuilder.setView(dialogView)
+
+        val uidText = dialogView.findViewById(R.id.uid_text) as TextView
+
+        uidText.text = dashboardViewModel.currentUser.trackingID
+
+        val shareButton = dialogView.findViewById(R.id.ok_button) as Button
+
+        val alertDialog = dialogBuilder.create()
+        alertDialog.show()
+
+        shareButton.setOnClickListener {
+
+            try {
+                val shareIntent = Intent(Intent.ACTION_SEND)
+                shareIntent.type = "text/plain"
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "My application name")
+                var shareMessage ="TrackingId: " + CurrentUser.user.trackingID + "\n Download VTracking app from PlayStore and start Tracking this user."
+
+                shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
+                startActivity(Intent.createChooser(shareIntent, "choose one"))
+
+                alertDialog.dismiss()
+            } catch (e: Exception) {
+                //e.toString();
+            }
         }
     }
 

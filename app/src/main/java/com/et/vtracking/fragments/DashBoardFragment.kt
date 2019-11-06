@@ -41,27 +41,10 @@ class DashBoardFragment : BaseFragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_dash_board, container, false)
-//        setHasOptionsMenu(true)
 
         trackView = view.findViewById(R.id.track_view)
         shareView = view.findViewById(R.id.share_view)
-//        shareView.visibility = View.GONE
         trackView.visibility = View.INVISIBLE
-
-        view.share_id.setOnClickListener {
-            try {
-                val shareIntent = Intent(Intent.ACTION_SEND)
-                shareIntent.type = "text/plain"
-                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "My application name")
-                var shareMessage ="TrackingId: " + CurrentUser.user.trackingID + "\n Download VTracking app from PlayStore and start Tracking this user."
-
-                shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
-                startActivity(Intent.createChooser(shareIntent, "choose one"))
-            } catch (e: Exception) {
-                //e.toString();
-            }
-
-        }
 
         view.track_button.setOnClickListener {
             if(!view.uid_number.text.toString().equals("")) {
@@ -132,41 +115,6 @@ class DashBoardFragment : BaseFragment() {
         } else {
             shareView.visibility = View.VISIBLE
             trackView.visibility = View.INVISIBLE
-
-            view!!.uid_text.setText(dashboardViewModel.currentUser.trackingID)
         }
     }
-
-    fun showShareDialog(){
-
-        val dialogBuilder = AlertDialog.Builder(context)
-
-        val inflater = this.layoutInflater
-        val dialogView = inflater.inflate(R.layout.share_dialog, null)
-        dialogBuilder.setView(dialogView)
-
-        val editText = dialogView.findViewById(R.id.phone_edit_view) as EditText
-
-        val okButton = dialogView.findViewById(R.id.ok_button) as Button
-
-        val cancelButton = dialogView.findViewById(R.id.cancel_button) as Button
-
-        val alertDialog = dialogBuilder.create()
-        alertDialog.show()
-
-        cancelButton.setOnClickListener {
-            alertDialog.dismiss()
-        }
-
-        okButton.setOnClickListener {
-
-            if(editText.text.isNotEmpty()){
-                displayLoadingIndicator("loading...")
-
-            }
-
-        }
-
-    }
-
 }
