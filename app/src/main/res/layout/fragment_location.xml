@@ -38,16 +38,16 @@
             android:layout_height="130dp"
             android:padding="5dp"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/rounded_image"
-            android:src="@drawable/user"/>
+            android:background="@null"
+            android:src="@drawable/truck"/>
 
         <TextView
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textSize="28sp"
-            android:layout_marginTop="10dp"
+            android:textSize="24sp"
+            android:layout_marginTop="5dp"
             android:layout_gravity="center_horizontal"
             android:textColor="@android:color/black"
             android:text="UserName"/>
@@ -56,8 +56,8 @@
             android:id="@+id/vehicle_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_marginTop="8dp"
+            android:textSize="19sp"
+            android:layout_marginTop="5dp"
             android:layout_gravity="center_horizontal"
             android:text="Vehicle Number"/>
 
@@ -65,8 +65,8 @@
             android:id="@+id/last_seen_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_marginTop="8dp"
+            android:textSize="19sp"
+            android:layout_marginTop="5dp"
             android:layout_gravity="center_horizontal"
             android:text="Last Seen"/>
 

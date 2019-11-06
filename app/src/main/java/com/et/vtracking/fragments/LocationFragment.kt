@@ -206,9 +206,10 @@ class LocationFragment : BaseFragment(), OnMapReadyCallback{
 
     override fun onMapReady(map: GoogleMap?) {
         googleMap = map!!
-        googleMap!!.setMyLocationEnabled(true)
+        if(CurrentUser.user.userType.equals("Driver")) {
+            googleMap!!.setMyLocationEnabled(true)
+        }
     }
-
 
     fun initLocation() {
        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(context!!)
