@@ -49,7 +49,7 @@ class OnboardingFragment : BaseFragment() {
                         view.username.text.toString(),
                         view.vehicle_number.text.toString(),
                         view.vehicle_model.text.toString(),
-                        view.spinner.selectedItem.toString().toString()
+                        view.spinner.selectedItem.toString()
                     )
                 } else{
                     showPrompt(context!!, "Error!", "Please provide all data")

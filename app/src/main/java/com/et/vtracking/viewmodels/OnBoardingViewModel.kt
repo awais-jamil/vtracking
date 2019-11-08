@@ -153,7 +153,19 @@ class OnBoardingViewModel: ViewModel() {
 
     }
 
-    fun saveUserData( username: String, vehicleNum: String, vehicleModel: String, userType: String) {
+    fun saveUserData(username: String, vehicleNum: String, vehicleModel: String, userType: String) {
+
+        var trackId = ""
+        var vehicleList = vehicleNum.split(' ')
+        var vehicleModelList = vehicleModel.split(' ')
+
+        for(str in vehicleModelList){
+            trackId = trackId+str
+        }
+
+        for(str in vehicleList){
+            trackId = trackId+str
+        }
 
         var  user = hashMapOf(
             "uid" to currentUser!!.uid,
@@ -161,7 +173,7 @@ class OnBoardingViewModel: ViewModel() {
             "vehicleNum" to vehicleNum,
             "vehicleModel" to vehicleModel,
             "userType" to userType,
-            "trackingID" to vehicleModel+vehicleNum
+            "trackingID" to trackId.toLowerCase()
         )
 
         val firestore = FirebaseFirestore.getInstance()
