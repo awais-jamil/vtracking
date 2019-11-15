@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/dashBoardFragment"
-        android:name="com.engintech.vtracking.fragments.DashBoardFragment"
+        android:name="com.et.tracker.fragments.DashBoardFragment"
         android:label="fragment_dash_board"
         tools:layout="@layout/fragment_dash_board" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/locationFragment"
-        android:name="com.et.vtracking.fragments.LocationFragment"
+        android:name="com.et.tracker.fragments.LocationFragment"
         android:label="fragment_location"
         tools:layout="@layout/fragment_location" >
         <action

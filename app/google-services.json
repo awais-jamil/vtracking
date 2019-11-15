@@ -1,50 +1,43 @@
 {
   "project_info": {
-    "project_number": "260626340842",
-    "firebase_url": "https://vtrackingdemo.firebaseio.com",
-    "project_id": "vtrackingdemo",
-    "storage_bucket": "vtrackingdemo.appspot.com"
+    "project_number": "551153682409",
+    "firebase_url": "https://vtrack-c6192.firebaseio.com",
+    "project_id": "vtrack-c6192",
+    "storage_bucket": "vtrack-c6192.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:260626340842:android:ed73c2e12f5b1a5ac8b093",
+        "mobilesdk_app_id": "1:551153682409:android:52fad0bc79948c40686d78",
         "android_client_info": {
-          "package_name": "com.et.vtracking"
+          "package_name": "com.et.tracker"
         }
       },
       "oauth_client": [
         {
-          "client_id": "260626340842-emebihtmm0gt4k5isod2hk5hoj5i6pbs.apps.googleusercontent.com",
+          "client_id": "551153682409-eekqq8jihurljc5vohpj9r1ue42nr2f1.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.et.vtracking",
+            "package_name": "com.et.tracker",
             "certificate_hash": "1f06870f0a4a4cc120cd2c0c2007c318e2619dbe"
           }
         },
         {
-          "client_id": "260626340842-jve4chkqr2ilbcl1r6lj5v2qi39fs4ba.apps.googleusercontent.com",
+          "client_id": "551153682409-eorku0n33aatetfqcaoe1e7joipen05g.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAW54jU3d9f7JdjGABWpeOSZetzHW09DpU"
+          "current_key": "AIzaSyBrqgAVFu96wiORlkmIapAL6P2EToO2-jE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "260626340842-jve4chkqr2ilbcl1r6lj5v2qi39fs4ba.apps.googleusercontent.com",
+              "client_id": "551153682409-eorku0n33aatetfqcaoe1e7joipen05g.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "260626340842-5tsddm6v8la3rrvtjbbu8u0eppdnnvp1.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.et.VTracker"
-              }
             }
           ]
         }

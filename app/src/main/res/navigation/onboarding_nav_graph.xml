@@ -25,7 +25,7 @@
 <!--    </fragment>-->
     <fragment
         android:id="@+id/OBNumberVerificationFragment"
-        android:name="com.et.vtracking.fragments.OBNumberVerificationFragment"
+        android:name="com.et.tracker.fragments.OBNumberVerificationFragment"
         android:label="fragment_obnumber_varification"
         tools:layout="@layout/fragment_obnumber_varification" >
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/OBPinCodeFragment"
-        android:name="com.et.vtracking.fragments.OBPinCodeFragment"
+        android:name="com.et.tracker.fragments.OBPinCodeFragment"
         android:label="fragment_obpin_code"
         tools:layout="@layout/fragment_obpin_code" >
         <action
@@ -43,6 +43,6 @@
     </fragment>
     <fragment
         android:id="@+id/onboardingFragment"
-        android:name="com.et.vtracking.fragments.OnboardingFragment"
+        android:name="com.et.tracker.fragments.OnboardingFragment"
         android:label="OnboardingFragment" />
 </navigation>
