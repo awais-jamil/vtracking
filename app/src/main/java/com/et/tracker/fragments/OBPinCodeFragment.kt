@@ -53,7 +53,7 @@ class OBPinCodeFragment : BaseFragment() {
                 if(state == OnBoardingViewModel.OnBoardingState.UPDATE_PROFILE) {
 
                     hideLoadingIndicator()
-                    findNavController().navigate(R.id.action_OBPinCodeFragment_to_onboardingFragment)
+                    findNavController().navigate(R.id.action_OBPinCodeFragment_to_OBUserFragment)
                 }
 
                 else if(state == OnBoardingViewModel.OnBoardingState.RESEND_PIN_CODE) {

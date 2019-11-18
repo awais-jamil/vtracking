@@ -128,7 +128,7 @@ class LocationFragment : BaseFragment(), OnMapReadyCallback{
 
     fun initLogic(){
 
-        if(CurrentUser.user.userType.equals("Driver")) {
+        if(!CurrentUser.user.userType.equals("Parent")) {
             initLocation()
             view!!.share_id.visibility = View.VISIBLE
         } else {
@@ -139,7 +139,7 @@ class LocationFragment : BaseFragment(), OnMapReadyCallback{
 
     fun loadUserData(){
 
-        if(CurrentUser.user.userType.equals("Driver")) {
+        if(!CurrentUser.user.userType.equals("Parent")) {
             view!!.user_info_view.visibility = View.GONE
             view!!.gif_view.visibility = View.VISIBLE
         } else {
@@ -188,7 +188,7 @@ class LocationFragment : BaseFragment(), OnMapReadyCallback{
 
     override fun onStop() {
         super.onStop()
-        if(CurrentUser.user.userType.equals("Driver")) {
+        if(!CurrentUser.user.userType.equals("Parent")) {
             mFusedLocationClient.removeLocationUpdates(
                 mLocationCallback
             )
@@ -205,7 +205,7 @@ class LocationFragment : BaseFragment(), OnMapReadyCallback{
 
     override fun onMapReady(map: GoogleMap?) {
         googleMap = map!!
-        if(CurrentUser.user.userType.equals("Driver")) {
+        if(!CurrentUser.user.userType.equals("Parent")) {
             googleMap!!.setMyLocationEnabled(true)
         }
     }

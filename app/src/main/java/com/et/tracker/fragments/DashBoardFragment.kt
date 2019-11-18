@@ -105,7 +105,7 @@ class DashBoardFragment : BaseFragment() {
 
     fun loadUI(){
 
-        if(dashboardViewModel.currentUser.userType.equals("Tracker")){
+        if(dashboardViewModel.currentUser.userType.equals("Parent")){
             trackView.visibility = View.VISIBLE
             shareView.visibility = View.INVISIBLE
         } else {

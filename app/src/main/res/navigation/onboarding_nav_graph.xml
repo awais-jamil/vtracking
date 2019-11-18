@@ -37,8 +37,20 @@
         android:name="com.et.tracker.fragments.OBPinCodeFragment"
         android:label="fragment_obpin_code"
         tools:layout="@layout/fragment_obpin_code" >
+
         <action
-            android:id="@+id/action_OBPinCodeFragment_to_onboardingFragment"
+            android:id="@+id/action_OBPinCodeFragment_to_OBUserFragment"
+            app:destination="@id/OBUserFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/OBUserFragment"
+        android:name="com.et.tracker.fragments.OnboardingUserFragment"
+        android:label="fragment_obpin_code"
+        tools:layout="@layout/fragment_onboarding_user" >
+
+        <action
+            android:id="@+id/action_OBUserFragment_to_onboardingFragment"
             app:destination="@id/onboardingFragment" />
     </fragment>
     <fragment

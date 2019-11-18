@@ -44,6 +44,7 @@ class OnBoardingViewModel: ViewModel() {
 
     var verifiedPhoneNumber: String? = null
 
+    var userType: String = ""
 
     fun verifyPhoneNumber(phoneNumber: String) {
 
@@ -155,26 +156,37 @@ class OnBoardingViewModel: ViewModel() {
 
     fun saveUserData(username: String, vehicleNum: String, vehicleModel: String, userType: String) {
 
-        var trackId = ""
-        var vehicleList = vehicleNum.split(' ')
-        var vehicleModelList = vehicleModel.split(' ')
+        lateinit var user: HashMap<String, String>
 
-        for(str in vehicleModelList){
-            trackId = trackId+str
+        if(userType.equals("Parent")){
+            user = hashMapOf(
+                "uid" to currentUser!!.uid,
+                "fullName" to username,
+                "userType" to userType
+            )
+        } else {
+
+            var trackId = ""
+            var vehicleList = vehicleNum.split(' ')
+            var vehicleModelList = vehicleModel.split(' ')
+
+            for(str in vehicleModelList){
+                trackId = trackId+str
+            }
+
+            for(str in vehicleList){
+                trackId = trackId+str
+            }
+
+            user = hashMapOf(
+                "uid" to currentUser!!.uid,
+                "fullName" to username,
+                "vehicleNum" to vehicleNum,
+                "vehicleModel" to vehicleModel,
+                "userType" to userType,
+                "trackingID" to trackId.toLowerCase()
+            )
         }
-
-        for(str in vehicleList){
-            trackId = trackId+str
-        }
-
-        var  user = hashMapOf(
-            "uid" to currentUser!!.uid,
-            "fullName" to username,
-            "vehicleNum" to vehicleNum,
-            "vehicleModel" to vehicleModel,
-            "userType" to userType,
-            "trackingID" to trackId.toLowerCase()
-        )
 
         val firestore = FirebaseFirestore.getInstance()
         firestore.collection("user").document(currentUser!!.uid).set(user)

@@ -6,8 +6,8 @@
 
     <string-array name="user_type">
         <item>""</item>
-        <item>Tracker</item>
-        <item>Driver</item>
+        <item>Parent</item>
+        <item>Service Provider</item>
     </string-array>
     <string name="title_activity_dash_board_drawer">DashBoardDrawerActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
